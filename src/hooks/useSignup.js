@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { projectAuth, projectStorage, projectFirestore } from '../firebase/config'
+import useAuthContext from './useAuthContext'
 
 export const useSignup = () => {
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const [isCancelled, setIsCancelled] = useState(false)
+    const { dispatch } = useAuthContext()
 
     const signup = async (email, password, displayName, profilePic) => {
         setError(null)
@@ -34,7 +36,7 @@ export const useSignup = () => {
                 photoURL: imgUrl,
             })
 
-            console.log(isCancelled)
+            dispatch({type: 'LOGIN', payload: res.user})
 
             if (!isCancelled) {
                 console.log("isPending updated")
@@ -51,10 +53,11 @@ export const useSignup = () => {
     }
 
     useEffect(() => {
+        setIsCancelled(false)
         return () => {
             setIsCancelled(true)
-        }
-    }, [])
+        };
+    }, []);
 
     return { signup, error, isPending }
 }

@@ -37,8 +37,8 @@ export default function Signup(){
             setProfilePicError('Select am image')
             return
         }
-        if(selected.size > 100000){
-            setProfilePicError('Select image of size less than 100KB')
+        if(selected.size > 300000){
+            setProfilePicError('Select image of size less than 300KB')
             return
         }
 
