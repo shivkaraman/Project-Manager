@@ -13,7 +13,7 @@ export default function useLogout () {
         setError(null)
         try{
             const uid = user.uid
-            await projectFirestore.collection('users').doc(uid).update({onlline: false})
+            await projectFirestore.collection('users').doc(uid).update({online: false})
 
             await projectAuth.signOut()
             dispatch({type : 'LOGOUT'})

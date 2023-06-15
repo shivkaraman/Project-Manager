@@ -5,6 +5,7 @@ import useAuthContext from './hooks/useAuthContext';
 
 //Components
 import Navbar from './components/Navbar'
+import OnlineUsers from './components/OnlineUsers';
 import Sidebar from './components/Sidebar'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
@@ -33,6 +34,7 @@ function App() {
 							</Routes>
 						</div>} />
 					</Routes>
+					{ user && <OnlineUsers />}
 				</BrowserRouter>
 			)}
 		</div>
