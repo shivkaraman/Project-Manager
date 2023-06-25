@@ -21,8 +21,8 @@ export default function Project() {
 
     return (
         <div className="project-details">
-        <ProjectSummary project={document} />
-        <ProjectComments project={document} />
+            <ProjectSummary project={document} />
+            <ProjectComments project={document} />
         </div>
     )
 }
